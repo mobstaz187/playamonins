@@ -142,7 +142,6 @@ const HomeScreen: React.FC = () => {
             <div className="glass-effect p-2 space-y-1.5">
               <div className="flex items-center justify-between">
                 <h3 className="pokemon-hollow text-sm pokemon-glow">DAILY REWARD</h3>
-                <span className="text-[10px] text-white/70">{timeLeft}</span>
               </div>
               <button className="w-full glass-effect rounded px-2 py-1 text-[10px] text-white/70 hover:text-white hover:bg-white/10 transition-colors">
                 Claim Reward
