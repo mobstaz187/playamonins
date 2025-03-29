@@ -5,10 +5,6 @@ import AnimatedPage from './AnimatedPage';
 import ComingSoonPopup from './ComingSoonPopup';
 import TogunePopup from './TogunePopup';
 
-interface VideoEvent extends React.SyntheticEvent<HTMLVideoElement> {
-  currentTarget: HTMLVideoElement;
-}
-
 interface AnimonInfo {
   name: string;
   description: string;
@@ -58,7 +54,6 @@ const HomeScreen: React.FC = () => {
   const [selectedMode, setSelectedMode] = useState('story');
   const [showComingSoon, setShowComingSoon] = useState(false);
   const [showTogunePopup, setShowTogunePopup] = useState(false);
-  const [timeLeft, setTimeLeft] = useState('23:45:12');
   const [onlinePlayers] = useState(() => Math.floor(Math.random() * (37 - 23 + 1) + 23));
   
   const featuredVideos = [
