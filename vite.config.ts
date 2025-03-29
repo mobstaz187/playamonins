@@ -2,25 +2,30 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
   base: '/animon/',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
+    copyPublicDir: true,
     rollupOptions: {
       input: {
         main: path.resolve(__dirname, 'index.html'),
       },
       output: {
         assetFileNames: (assetInfo) => {
-          const info = assetInfo.name.split('.')
-          const ext = info[info.length - 1]
+          if (!assetInfo.name) return 'assets/[name]-[hash][extname]';
+          
+          const info = assetInfo.name.split('.');
+          const ext = info[info.length - 1];
+          
           if (/png|jpe?g|svg|gif|tiff|bmp|ico|mp4/i.test(ext)) {
-            return `assets/${assetInfo.name}`
+            // Keep the original folder structure for media files
+            return `${assetInfo.name}`;
           }
-          return `assets/[name]-[hash][extname]`
+          
+          return 'assets/[name]-[hash][extname]';
         },
         chunkFileNames: 'assets/[name]-[hash].js',
         entryFileNames: 'assets/[name]-[hash].js',
