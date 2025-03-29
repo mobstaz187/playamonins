@@ -60,6 +60,7 @@ const TogunePopup: React.FC<TogunePopupProps> = ({ isOpen, onClose }) => {
                     <li>• Shadow Step: Move undetected through the shadows</li>
                     <li>• Deceptive Strike: Deal bonus damage while disguised</li>
                   </ul>
+                
                 </div>
               </div>
             </div>

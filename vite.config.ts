@@ -8,25 +8,12 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
-    copyPublicDir: true,
     rollupOptions: {
       input: {
         main: path.resolve(__dirname, 'index.html'),
       },
       output: {
-        assetFileNames: (assetInfo) => {
-          if (!assetInfo.name) return 'assets/[name]-[hash][extname]';
-          
-          const info = assetInfo.name.split('.');
-          const ext = info[info.length - 1];
-          
-          if (/png|jpe?g|svg|gif|tiff|bmp|ico|mp4/i.test(ext)) {
-            // Keep the original folder structure for media files
-            return `${assetInfo.name}`;
-          }
-          
-          return 'assets/[name]-[hash][extname]';
-        },
+        assetFileNames: 'assets/[name]-[hash][extname]',
         chunkFileNames: 'assets/[name]-[hash].js',
         entryFileNames: 'assets/[name]-[hash].js',
       },
